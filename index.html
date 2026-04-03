@@ -6,8 +6,6 @@
     <title>Eman Elshimy | Cybersecurity Graduate | SANS Scholar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* ========== ALL YOUR EXISTING CSS STYLES GO HERE ========== */
-        /* (Copy the entire style section from your current index.html) */
         * {
             margin: 0;
             padding: 0;
@@ -166,59 +164,70 @@
         }
 
         section {
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
             scroll-margin-top: 80px;
         }
 
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
             border-left: 4px solid var(--accent);
             padding-left: 1rem;
         }
 
-        .hero {
+        /* Hero + About Side by Side */
+        .hero-about-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+
+        .hero-left {
             text-align: center;
-            padding: 4rem 0;
         }
 
         .profile-photo {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--accent);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: var(--bg-card);
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
         .typed-text {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: var(--accent);
-            margin-bottom: 1.5rem;
-            min-height: 70px;
+            margin-top: 0.5rem;
+            min-height: 60px;
         }
 
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .about-right p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .btn {
-            padding: 0.8rem 2rem;
+            padding: 0.7rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
             cursor: pointer;
             border: none;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -243,120 +252,192 @@
             color: #000;
         }
 
+        /* Partner Logos */
         .partner-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 1rem;
+            gap: 1.5rem;
+            margin: 1rem 0;
         }
 
         .partner-logo {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 1rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             text-align: center;
             transition: all 0.3s;
-            cursor: pointer;
             text-decoration: none;
             color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .partner-logo:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             border-color: var(--accent);
             color: var(--accent);
         }
 
         .partner-logo img {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
-            margin-bottom: 0.5rem;
         }
 
-        .about-grid {
+        .partner-logo span {
+            font-size: 0.75rem;
+        }
+
+        /* Projects Grid - 3 columns */
+        .projects-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 2rem;
-            align-items: start;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        .headshot-photo {
-            width: 250px;
-            height: 250px;
-            border-radius: 20px;
-            object-fit: cover;
+        @media (max-width: 600px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .project-card {
             background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
-        .about-text p {
+        .project-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 140px;
+            background: var(--bg-dark);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1rem;
+        }
+
+        .project-content h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .project-content p {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin-bottom: 0.75rem;
         }
 
+        .tech-tag {
+            display: inline-block;
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent);
+            font-size: 0.65rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+            margin: 0.2rem 0.2rem 0 0;
+        }
+
+        .project-links {
+            margin-top: 0.75rem;
+        }
+
+        .project-links .btn-outline {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.7rem;
+        }
+
+        /* Cert Grid - Responsive */
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
         }
 
         .cert-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem;
+            border-radius: 10px;
+            padding: 0.75rem;
             transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         .cert-card.featured {
             border: 2px solid var(--accent);
-            box-shadow: 0 0 15px var(--glow);
+            box-shadow: 0 0 10px var(--glow);
         }
 
         .cert-card:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             background: var(--bg-card-hover);
         }
 
         .cert-img {
-            width: 60px;
-            height: 60px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
-            margin-bottom: 0.5rem;
+        }
+
+        .cert-info {
+            flex: 1;
         }
 
         .cert-name {
             font-weight: 600;
-            margin-bottom: 0.25rem;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            margin-bottom: 0.2rem;
         }
 
         .cert-issuer {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
         }
 
         .cert-date {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: var(--accent);
-            margin-top: 0.5rem;
         }
 
         .status-badge {
             display: inline-block;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.5rem;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.4rem;
             border-radius: 20px;
-            margin-top: 0.5rem;
+            margin-top: 0.2rem;
         }
 
         .status-progress {
@@ -369,9 +450,10 @@
             color: #000;
         }
 
+        /* Timeline - Compact */
         .timeline {
             position: relative;
-            padding-left: 2rem;
+            padding-left: 1.5rem;
         }
 
         .timeline::before {
@@ -386,306 +468,143 @@
 
         .timeline-item {
             position: relative;
-            padding-bottom: 2rem;
-            padding-left: 1.5rem;
+            padding-bottom: 1.25rem;
+            padding-left: 1rem;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2rem;
-            top: 0.5rem;
-            width: 12px;
-            height: 12px;
+            left: -1.5rem;
+            top: 0.3rem;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: var(--accent);
         }
 
         .timeline-date {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--accent);
-            margin-bottom: 0.25rem;
             font-weight: 600;
         }
 
         .timeline-title {
             font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-            color: var(--text-primary);
+            font-size: 0.9rem;
         }
 
         .timeline-company {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-bottom: 0.75rem;
         }
 
-        .timeline-achievement {
-            background: rgba(0, 255, 136, 0.1);
-            border-left: 3px solid var(--accent);
-            padding: 0.5rem 0.75rem;
-            margin: 0.5rem 0;
-            font-size: 0.85rem;
-            color: var(--accent);
-            border-radius: 0 8px 8px 0;
-        }
-
-        .timeline-duties {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 0.5rem;
-        }
-
-        .timeline-duties li {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            padding-left: 1.2rem;
-            position: relative;
-        }
-
-        .timeline-duties li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 160px;
-            background: var(--bg-dark);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .project-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.75rem;
-            color: var(--accent);
-        }
-
-        .project-content p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
+        /* Skills - Compact */
+        .skills-category {
             margin-bottom: 1rem;
         }
 
-        .project-content strong {
-            color: var(--accent);
-            font-size: 0.8rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .tech-stack, .features-list {
-            margin-bottom: 0.75rem;
-        }
-
-        .tech-tags-container, .features-tags-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            display: inline-block;
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--accent);
-            font-size: 0.7rem;
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 136, 0.2);
-        }
-
-        .feature-tag {
-            background: rgba(0, 255, 136, 0.08);
-            border-color: rgba(0, 255, 136, 0.3);
-        }
-
-        .project-links {
-            margin-top: 1rem;
-            padding-top: 0.75rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .project-links .btn-outline {
-            display: inline-block;
-            padding: 0.5rem 1.25rem;
-            font-size: 0.85rem;
-            background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            text-align: center;
-        }
-
-        .project-links .btn-outline:hover {
-            background: var(--accent);
-            color: #000;
-            transform: translateY(-2px);
-        }
-
-        .skills-category {
-            margin-bottom: 1.5rem;
-        }
-
         .skills-category h3 {
-            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
             color: var(--accent);
         }
 
         .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
         }
 
         .skill-tag {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 0.3rem 0.8rem;
+            padding: 0.2rem 0.6rem;
             border-radius: 20px;
-            font-size: 0.8rem;
-            transition: all 0.3s;
+            font-size: 0.7rem;
         }
 
-        .skill-tag:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
+        /* Stats */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin: 1.5rem 0;
         }
 
         .stat-card {
             text-align: center;
-            padding: 1rem;
+            padding: 0.75rem;
             background: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 10px;
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: var(--accent);
         }
 
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        /* Achievements Grid */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact */
         .contact-info-grid {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
-            max-width: 500px;
+            gap: 1rem;
+            max-width: 400px;
             margin: 0 auto;
         }
 
         .contact-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 10px;
+            padding: 1rem;
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 1rem;
             transition: all 0.3s;
         }
 
         .contact-card:hover {
             border-color: var(--accent);
-            transform: translateX(5px);
         }
 
         .contact-card i {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: rgba(0, 255, 136, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-
-        .contact-card .contact-details h3 {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 0.25rem;
-        }
-
-        .contact-card .contact-details p {
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .contact-card .contact-details a {
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .contact-card .contact-details a:hover {
             color: var(--accent);
         }
 
         .social-links-footer {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--border);
         }
 
         .social-link {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: var(--bg-card);
             border-radius: 50%;
             display: flex;
@@ -698,23 +617,24 @@
 
         .social-link:hover {
             color: var(--accent);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         .footer {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem;
             border-top: 1px solid var(--border);
             margin-top: 2rem;
             color: var(--text-muted);
+            font-size: 0.8rem;
         }
 
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             background: var(--accent);
             color: #000;
             border-radius: 50%;
@@ -732,38 +652,32 @@
         }
 
         .uow-logo {
-            width: 120px;
-            height: 120px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
+        }
+
+        .education-grid {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .education-grid {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         a {
             text-decoration: none;
         }
-        
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .achievements-grid .cert-card {
-            text-align: center;
-            padding: 1.25rem;
-        }
-        
-        .achievements-grid .cert-card strong {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-            color: var(--accent);
-        }
-        
-        h3.subsection-title {
+
+        .subsection-title {
             color: var(--accent);
             margin: 1.5rem 0 1rem 0;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
     </style>
 </head>
@@ -786,59 +700,52 @@
         </div>
         <div class="nav-container" id="navContainer">
             <button class="nav-btn" data-section="home">HOME</button>
-            <button class="nav-btn" data-section="certs">CERTS</button>
-            <button class="nav-btn" data-section="education">EDU</button>
-            <button class="nav-btn" data-section="experience">EXP</button>
             <button class="nav-btn" data-section="projects">PROJECTS</button>
+            <button class="nav-btn" data-section="certs">CERTS</button>
+            <button class="nav-btn" data-section="experience">EXP</button>
             <button class="nav-btn" data-section="contact">CONTACT</button>
         </div>
     </nav>
 
     <div class="container">
-        <!-- Hero Section -->
-        <section id="home">
-            <div class="hero">
+        <!-- Hero + About Side by Side  -->
+        <div class="hero-about-grid" id="home">
+            <!-- Left: Photo + Typing -->
+            <div class="hero-left">
                 <img src="images/profile.png" 
                      class="profile-photo" 
                      alt="Eman Elshimy"
-                     onerror="this.src='https://via.placeholder.com/180?text=Photo'">
-                <h1>Eman Elshimy</h1>
+                     onerror="this.src='https://via.placeholder.com/200?text=Photo'">
                 <div class="typed-text" id="typedText"></div>
-                <div class="btn-group">
-                    <button class="btn btn-primary" id="downloadResumeBtn">View Resume</button>
-                </div>
             </div>
-        </section>
+            
+            <!-- Right: About + Download Resume -->
+            <div class="about-right">
+                <p><strong>GIAC-certified Cybersecurity Honours Graduate</strong> and <strong>SANS/WiCyS Scholar</strong>, selected as 1 of 65 globally. Currently advancing through GSEC and GCIH, ranked in the <strong>Top 1% on TryHackMe</strong>.</p>
+                <p>Proven across SIEM engineering (Elastic), digital forensics, and GRC frameworks including NIST CSF, ISO 27001, and ASD Essential Eight. Bridges technical incident response with business risk.</p>
+                <p>📍 Graduate visa in NSW, Australia — seeking entry-level Cybersecurity or IT roles.</p>
+                <button class="btn btn-primary" id="downloadResumeBtn" style="margin-top: 0.5rem;">📄 Download Resume (PDF)</button>
+            </div>
+        </div>
 
-        <!-- Partner Logos Section -->
+        <!-- Stats Bar (Compact) -->
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-number" id="certCount">0</div><div class="stat-label">Certifications</div></div>
+            <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Projects</div></div>
+            <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">Experience</div></div>
+            <div class="stat-card"><div class="stat-number">1%</div><div class="stat-label">TryHackMe</div></div>
+        </div>
+
+        <!-- Recognized By -->
         <section>
             <h2 class="section-title">Recognized By</h2>
             <div class="partner-grid" id="partnerGrid"></div>
         </section>
 
-        <!-- Stats -->
-        <div class="stats-grid">
-            <div class="stat-card"><div class="stat-number" id="certCount">0</div><div>Certifications</div></div>
-            <div class="stat-card"><div class="stat-number">4</div><div>Projects</div></div>
-            <div class="stat-card"><div class="stat-number">8</div><div>Experience</div></div>
-            <div class="stat-card"><div class="stat-number">1%</div><div>Top TryHackMe</div></div>
-        </div>
-
-        <!-- About Me -->
-        <section id="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-grid">
-                <img src="images/profile.png" 
-                     class="headshot-photo" 
-                     alt="Eman Elshimy Headshot"
-                     onerror="this.src='https://via.placeholder.com/250?text=Headshot'">
-                <div class="about-text">
-                    <p>GIAC-certified Cybersecurity Honours Graduate and SANS/WiCyS Scholar, selected as 1 of 65 globally. Currently advancing through GSEC and GCIH, ranked in the Top 1% on TryHackMe, and proven across technical assistance, SIEM engineering (Elastic), digital forensics, and GRC frameworks including NIST CSF, ISO 27001, and the ASD Essential Eight.</p>
-                    <p>Ability to bridge the gap between technical incident response and business risk GRC. Have strong technical capability and the ability to translate complex findings into clear, executive-level remediation, backed by Honours research and cybersecurity writing.</p>
-                    <p>Currently seeking entry-level Cybersecurity or IT roles. Ready to contribute from day one to a high-performing, proactive team.</p>
-                    <button class="btn btn-outline" id="downloadResumeBtn2" style="margin-top: 1rem;">Download Resume (PDF)</button>
-                </div>
-            </div>
+        <!-- Projects (3 columns) -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid" id="projectsGrid"></div>
         </section>
 
         <!-- Certifications -->
@@ -847,203 +754,72 @@
             <div class="cert-grid" id="certGrid"></div>
         </section>
 
-        <!-- Education -->
-        <section id="education">
-            <h2 class="section-title">Education</h2>
-            <div class="about-grid" style="grid-template-columns: 150px 1fr;">
-                <img src="images/Logos/uow.webp" 
-                     class="uow-logo" 
-                     alt="UOW Logo"
-                     onerror="this.src='https://via.placeholder.com/120?text=UOW'">
-                <div>
-                    <h3>Honours in Computer Science</h3>
-                    <p>University of Wollongong, Australia | 2025</p>
-                    <h3 style="margin-top: 1rem;">Bachelor of Computer Science (Cyber Security Major)</h3>
-                    <p>University of Wollongong, Australia | 2022 - 2024</p>
-                    <p>Outstanding Achievement Scholarship</p>
-                </div>
-            </div>
-        </section>
-
         <!-- Professional Experience -->
         <section id="experience">
             <h2 class="section-title">Professional Experience</h2>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">Feb 2025 – Nov 2025</div>
-                    <div class="timeline-title">Peer Learning Coach</div>
-                    <div class="timeline-company">University of Wollongong</div>
-                    <div class="timeline-achievement">Key Achievement: Recognised for delivering measurably improved student outcomes in a coaching programme.</div>
-                    <ul class="timeline-duties">
-                        <li>Delivered tailored one-on-one academic coaching across computer science and cybersecurity subjects.</li>
-                        <li>Designed personalised study plans and practice exercises to address individual knowledge gaps.</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Jul 2023 – Nov 2025</div>
-                    <div class="timeline-title">PASS Leader – Data Management & Security</div>
-                    <div class="timeline-company">University of Wollongong</div>
-                    <div class="timeline-achievement">Key Achievement: Drove average student grade improvement from 60% to 83%; multi-year role continuation based on consistent outcomes.</div>
-                    <ul class="timeline-duties">
-                        <li>Facilitated weekly technical sessions on data management and security for undergraduate cohorts.</li>
-                        <li>Designed interactive lab exercises and group activities reinforcing core cybersecurity concepts.</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Jul 2024 & Aug 2025</div>
-                    <div class="timeline-title">PECAN CTF Presenter</div>
-                    <div class="timeline-company">University of Wollongong</div>
-                    <div class="timeline-achievement">Key Achievement: Upskilled participants in forensic techniques; commended for clear, accessible technical delivery to students and early-career professionals.</div>
-                    <ul class="timeline-duties">
-                        <li>Delivered hands-on Digital Forensics and OSINT workshops demonstrating metadata analysis and file-hash investigation workflows using live CTF scenarios.</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Jul 2024 – Nov 2024</div>
-                    <div class="timeline-title">Cybersecurity Intern</div>
-                    <div class="timeline-company">CyberX</div>
-                    <div class="timeline-achievement">Key Achievement: Identified high- and medium-severity vulnerabilities across client environments; commended for clarity of reporting that bridged engineering and executive audiences.</div>
-                    <ul class="timeline-duties">
-                        <li>Performed web and network penetration tests using Kali Linux and Burp Suite across client environments.</li>
-                        <li>Produced technical and executive penetration testing reports detailing vulnerabilities, critical findings, and remediation strategies.</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2024</div>
-                    <div class="timeline-title">Writer</div>
-                    <div class="timeline-company">Incognito Criminology Journal / Women in Security Magazine</div>
-                    <ul class="timeline-duties">
-                        <li>Authored "The Ransomware Crisis and Mitigation" (Issue 3, 2024); contributed to Women in Security Magazine (Issue 20, 2024).</li>
-                        <li>Translated complex ransomware threat intelligence into executive-level narratives to reduce human risk for non-technical audiences.</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Mar 2024 – Nov 2024</div>
-                    <div class="timeline-title">Technical Assistant Volunteer</div>
-                    <div class="timeline-company">Illawarra Multicultural Services</div>
-                    <ul class="timeline-duties">
-                        <li>Diagnosed and resolved hardware/software issues for community members, maintaining strict data confidentiality and user privacy standards.</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Oct 2023 – Nov 2023</div>
-                    <div class="timeline-title">Cyber Cadet</div>
-                    <div class="timeline-company">GuardWare</div>
-                    <ul class="timeline-duties">
-                        <li>Conducted threat assessments and delivered cybersecurity awareness campaigns to SME business owners and employees.</li>
-                    </ul>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">Mar 2023 – Apr 2023</div>
-                    <div class="timeline-title">Customer Solutions Specialist</div>
-                    <div class="timeline-company">PROBE CX (NSW Electoral Commission)</div>
-                    <ul class="timeline-duties">
-                        <li>Managed high-volume inbound calls and expertly resolved a wide range of customer inquiries.</li>
-                        <li>Ensured consistently professional communication and delivered a positive user experience.</li>
-                    </ul>
+                <div class="timeline-item"><div class="timeline-date">Feb 2025 – Nov 2025</div><div class="timeline-title">Peer Learning Coach</div><div class="timeline-company">University of Wollongong</div></div>
+                <div class="timeline-item"><div class="timeline-date">Jul 2023 – Nov 2025</div><div class="timeline-title">PASS Leader – Data Management & Security</div><div class="timeline-company">University of Wollongong</div></div>
+                <div class="timeline-item"><div class="timeline-date">Jul 2024 & Aug 2025</div><div class="timeline-title">PECAN CTF Presenter</div><div class="timeline-company">University of Wollongong</div></div>
+                <div class="timeline-item"><div class="timeline-date">Jul 2024 – Nov 2024</div><div class="timeline-title">Cybersecurity Intern</div><div class="timeline-company">CyberX</div></div>
+                <div class="timeline-item"><div class="timeline-date">2024</div><div class="timeline-title">Writer</div><div class="timeline-company">Incognito Criminology Journal / Women in Security Magazine</div></div>
+                <div class="timeline-item"><div class="timeline-date">Mar 2024 – Nov 2024</div><div class="timeline-title">Technical Assistant Volunteer</div><div class="timeline-company">Illawarra Multicultural Services</div></div>
+                <div class="timeline-item"><div class="timeline-date">Oct 2023 – Nov 2023</div><div class="timeline-title">Cyber Cadet</div><div class="timeline-company">GuardWare</div></div>
+                <div class="timeline-item"><div class="timeline-date">Mar 2023 – Apr 2023</div><div class="timeline-title">Customer Solutions Specialist</div><div class="timeline-company">PROBE CX (NSW Electoral Commission)</div></div>
+            </div>
+        </section>
+
+        <!-- Education (Compact) -->
+        <section>
+            <h2 class="section-title">Education</h2>
+            <div class="education-grid">
+                <img src="images/Logos/uow.webp" class="uow-logo" alt="UOW Logo" onerror="this.src='https://via.placeholder.com/80?text=UOW'">
+                <div>
+                    <p><strong>Honours in Computer Science</strong> — University of Wollongong (2025)</p>
+                    <p><strong>Bachelor of Computer Science (Cyber Security Major)</strong> — University of Wollongong (2022-2024)</p>
+                    <p>Outstanding Achievement Scholarship </p>
                 </div>
             </div>
         </section>
 
-        <!-- Notable Achievements Section -->
-        <section id="achievements">
-            <h2 class="section-title">Notable Achievements</h2>
-            
-            <h3 class="subsection-title">Global Recognition</h3>
-            <div class="achievements-grid">
-                <div class="cert-card">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏆</div>
-                    <strong>Top 1% on TryHackMe</strong>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Ranked among top 1% of over 3 million users globally</p>
-                </div>
-                <div class="cert-card">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌟</div>
-                    <strong>SANS/WiCyS Global Scholar</strong>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">1 of 65 selected worldwide; awarded fully-funded SANS training for both GSEC and GCIH (rare double selection)</p>
-                </div>
-                <div class="cert-card">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
-                    <strong>GIAC Certified</strong>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">GFACT certified (Feb 2026); GSEC (est. Jun 2026) & GCIH (est. Sept 2026) in progress</p>
-                </div>
-            </div>
-            
-            <h3 class="subsection-title">Teaching & Leadership Impact</h3>
-            <div class="achievements-grid">
-                <div class="cert-card">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
-                    <strong>PASS Leader Excellence</strong>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Drove average student grades from 60% to 83% (23 percentage point improvement)</p>
-                </div>
-                <div class="cert-card">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏅</div>
-                    <strong>UOWx Leadership Award (2023)</strong>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Strategic goal-setting and peer mentorship</p>
-                </div>
-                <div class="cert-card">
-                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🤝</div>
-                    <strong>UOWx Collaboration & Communication Award (2023)</strong>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">Cross-functional team engagement</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid" id="projectsGrid"></div>
-        </section>
-
-        <!-- Skills -->
+        <!-- Skills (Compact) -->
         <section>
             <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-category"><h3>Security Operations</h3><div class="skill-tags"><span class="skill-tag">SIEM (Elastic)</span><span class="skill-tag">Log Analysis</span><span class="skill-tag">Alert Triage</span><span class="skill-tag">Incident Response</span><span class="skill-tag">Threat Hunting</span></div></div>
+            <div class="skills-category"><h3>Security Operations</h3><div class="skill-tags"><span class="skill-tag">SIEM (Elastic)</span><span class="skill-tag">Log Analysis</span><span class="skill-tag">Incident Response</span><span class="skill-tag">Threat Hunting</span></div></div>
             <div class="skills-category"><h3>GRC & Frameworks</h3><div class="skill-tags"><span class="skill-tag">NIST CSF</span><span class="skill-tag">ISO 27001</span><span class="skill-tag">ASD Essential Eight</span><span class="skill-tag">MITRE ATT&CK</span></div></div>
-            <div class="skills-category"><h3>Programming</h3><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">Bash</span><span class="skill-tag">HTML/CSS</span></div></div>
-            <div class="skills-category"><h3>Cloud & Tools</h3><div class="skill-tags"><span class="skill-tag">GCP/BigQuery</span><span class="skill-tag">Wireshark</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">Burp Suite</span><span class="skill-tag">Nmap</span></div></div>
+            <div class="skills-category"><h3>Programming & Cloud</h3><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">GCP/BigQuery</span><span class="skill-tag">Bash</span></div></div>
+            <div class="skills-category"><h3>Tools</h3><div class="skill-tags"><span class="skill-tag">Wireshark</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">Burp Suite</span><span class="skill-tag">Nmap</span></div></div>
+        </section>
+
+        <!-- Notable Achievements -->
+        <section>
+            <h2 class="section-title">Notable Achievements</h2>
+            <div class="achievements-grid">
+                <div class="cert-card"><strong>🏆 Top 1% TryHackMe</strong><br><span style="font-size:0.7rem;">Top 1% of 3M+ users</span></div>
+                <div class="cert-card"><strong>🌟 SANS/WiCyS Scholar</strong><br><span style="font-size:0.7rem;">1 of 65 globally (double scholar)</span></div>
+                <div class="cert-card"><strong>📊 PASS Leader Excellence</strong><br><span style="font-size:0.7rem;">60% → 83% grade improvement</span></div>
+                <div class="cert-card"><strong>🏅 UOWx Leadership Award</strong><br><span style="font-size:0.7rem;">Strategic goal-setting & mentorship</span></div>
+                <div class="cert-card"><strong>🤝 UOWx Collaboration Award</strong><br><span style="font-size:0.7rem;">Cross-functional engagement</span></div>
+                <div class="cert-card"><strong>📝 Published Author</strong><br><span style="font-size:0.7rem;">Incognito Criminology + Women in Security</span></div>
+            </div>
         </section>
 
         <!-- Publications -->
         <section>
             <h2 class="section-title">Publications</h2>
             <div class="cert-grid">
-                <div class="cert-card"><h3>"The Ransomware Crisis and Mitigation"</h3><p>Incognito Criminology Journal (Issue 3, 2024)</p></div>
-                <div class="cert-card"><h3>Women in Security Magazine</h3><p>Student Chapter Contributor (Issue 20, 2024)</p></div>
+                <div class="cert-card"><strong>"The Ransomware Crisis and Mitigation"</strong><br>Incognito Criminology Journal (Issue 3, 2024)</div>
+                <div class="cert-card"><strong>Women in Security Magazine</strong><br>Student Chapter Contributor (Issue 20, 2024)</div>
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact -->
         <section id="contact">
-            <h2 class="section-title">Contact Me</h2>
+            <h2 class="section-title">Contact</h2>
             <div class="contact-info-grid">
-                <div class="contact-card">
-                    <i class="fas fa-envelope"></i>
-                    <div class="contact-details">
-                        <h3>Email</h3>
-                        <p><a href="mailto:em.elshimi@gmail.com">em.elshimi@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-phone"></i>
-                    <div class="contact-details">
-                        <h3>Phone</h3>
-                        <p><a href="tel:0435699413">0435 699 413</a></p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div class="contact-details">
-                        <h3>Location</h3>
-                        <p>NSW, Australia</p>
-                    </div>
-                </div>
+                <div class="contact-card"><i class="fas fa-envelope"></i><a href="mailto:em.elshimi@gmail.com">em.elshimi@gmail.com</a></div>
+                <div class="contact-card"><i class="fas fa-phone"></i><a href="tel:0435699413">0435 699 413</a></div>
+                <div class="contact-card"><i class="fas fa-map-marker-alt"></i>NSW, Australia</div>
             </div>
             <div class="social-links-footer">
                 <a href="https://linkedin.com/in/eman-elshimy-4a5266200" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
@@ -1054,36 +830,21 @@
     </div>
 
     <div class="footer">
-        <p>© 2026 Eman Elshimy. All rights reserved. | Built for cybersecurity</p>
+        <p>© 2026 Eman Elshimy | Cybersecurity Professional</p>
     </div>
 
     <script>
-        // Certifications with RELATIVE paths (for GitHub Pages)
+        // Certifications Data (Compact display)
         const certifications = [
-            { name: "GFACT - GIAC Foundational Cybersecurity Technologies", issuer: "GIAC", date: "Feb 2026", status: "completed", featured: true, imgPath: "images/Certs/gfact.png" },
-            { name: "GSEC - GIAC Security Essentials", issuer: "GIAC", date: "Est. Jun 2026", status: "progress", featured: true, imgPath: "images/Certs/gsec.png" },
-            { name: "GCIH - GIAC Certified Incident Handler", issuer: "GIAC", date: "Est. Sept 2026", status: "progress", featured: true, imgPath: "images/Certs/gcih.png" },
-            { name: "CISCO Junior Cybersecurity Analyst", issuer: "Cisco", date: "Jun 2024", status: "completed", featured: false, imgPath: "images/Certs/cisco-junior.png" },
-            { name: "Elastic Security for SIEM", issuer: "Elastic", date: "Aug 2025", status: "completed", featured: false, imgPath: "images/Certs/elastic.png" },
-            { name: "CISCO Networking Basics", issuer: "Cisco", date: "Jul 2025", status: "completed", featured: false, imgPath: "images/Certs/cisco-networking.png" },
-            { name: "SOC Level 1 - TryHackMe", issuer: "TryHackMe", date: "Jan 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-soc.png" },
-            { name: "WiCyS STS Learning Path I", issuer: "TryHackMe/WiCyS", date: "Sep 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-wicys1.png" },
-            { name: "WiCyS STS - Web Fundamentals", issuer: "TryHackMe/WiCyS", date: "Oct 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-web.png" },
-            { name: "WiCyS STS - Pentesting", issuer: "TryHackMe/WiCyS", date: "Oct 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-pentest.png" },
-            { name: "WiCyS STS - Blue Team", issuer: "TryHackMe/WiCyS", date: "Oct 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-bluelight.png" },
-            { name: "ANZ Cyber Security Management", issuer: "ANZ/The Forage", date: "Apr 2024", status: "completed", featured: false, imgPath: "images/Certs/anz.png" },
-            { name: "CommBank Intro to Cybersecurity", issuer: "Commonwealth Bank", date: "Aug 2024", status: "completed", featured: false, imgPath: "images/Certs/commbank.png" },
-            { name: "Work Ready Skills", issuer: "GradConnection/DBL", date: "Aug 2024", status: "completed", featured: false, imgPath: "images/Certs/workready.png" },
-            { name: "ANZ Workplace Preparation", issuer: "ANZ/The Forage", date: "2023", status: "completed", featured: false, imgPath: "images/Certs/anz-workplace.png" },
-            { name: "Cybersecurity Virtual Program", issuer: "The Forage", date: "2023", status: "completed", featured: false, imgPath: "images/Certs/forage-cyber.png" },
-            { name: "Datacom Cyber Security Operations", issuer: "Datacom/The Forage", date: "Feb 2026", status: "completed", featured: false, imgPath: "images/Certs/datacom.png" },
-            { name: "PwC Cyber Security Consulting", issuer: "PwC/The Forage", date: "Mar 2024", status: "completed", featured: false, imgPath: "images/Certs/pwc.png" },
-            { name: "PwC Switzerland Cybersecurity", issuer: "PwC/The Forage", date: "Jul 2022", status: "completed", featured: false, imgPath: "images/Certs/pwc-swiss.png" },
-            { name: "GCP Data Engineer: BigQuery", issuer: "Skillsoft", date: "Mar 2026", status: "completed", featured: false, imgPath: "images/Certs/gcp.png" },
-            { name: "Malware Analysis Fundamentals", issuer: "MaharaTech", date: "Jun 2024", status: "completed", featured: false, imgPath: "images/Certs/malware.png" }
+            { name: "GFACT", issuer: "GIAC", date: "Feb 2026", status: "completed", featured: true, imgPath: "images/Certs/gfact.png" },
+            { name: "GSEC", issuer: "GIAC", date: "Est. Jun 2026", status: "progress", featured: true, imgPath: "images/Certs/gsec.png" },
+            { name: "GCIH", issuer: "GIAC", date: "Est. Sept 2026", status: "progress", featured: true, imgPath: "images/Certs/gcih.png" },
+            { name: "CISCO Junior Analyst", issuer: "Cisco", date: "2024", status: "completed", featured: false, imgPath: "images/Certs/cisco-junior.png" },
+            { name: "Elastic SIEM", issuer: "Elastic", date: "2025", status: "completed", featured: false, imgPath: "images/Certs/elastic.png" },
+            { name: "SOC Level 1", issuer: "TryHackMe", date: "2025", status: "completed", featured: false, imgPath: "images/Certs/thm-soc.png" },
+            { name: "Cloud Security", issuer: "AWS", date: "2026", status: "completed", featured: false, imgPath: "images/Certs/aws.png" }
         ];
 
-        // Partner Logos with RELATIVE paths
         const partners = [
             { name: "GIAC", url: "https://www.giac.org", imgPath: "images/Logos/gfact.png" },
             { name: "SANS", url: "https://www.sans.org", imgPath: "images/Logos/sans.webp" },
@@ -1097,38 +858,9 @@
         const RESUME_PATH = "resume.pdf";
 
         const projects = [
-            { 
-                name: "CVE Intelligence Tool", 
-                desc: "Fetches real-time CVE data from NIST NVD API and translates technical vulnerabilities into plain English for executives and technical teams.", 
-                tech: ["Python", "REST API", "JSON", "CVSS v3"], 
-                github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/cve_translator.py",
-                features: ["CVSS scoring", "Jargon translation", "Executive summaries", "Batch processing"],
-                hasLink: true
-            },
-            { 
-                name: "Log Anomaly Detector", 
-                desc: "Real-time security event analyzer that detects brute force attacks, SQL injection, XSS, and port scanning from auth and web server logs.", 
-                tech: ["Python", "Regex", "Log Parsing", "Pattern Matching"], 
-                github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/log_anomaly_detector.py",
-                features: ["Brute force detection", "Web attack signatures", "Time-window analysis", "Alert prioritization"],
-                hasLink: true
-            },
-            { 
-                name: "Smart Network Scanner", 
-                desc: "Multi-threaded port scanner with service detection, banner grabbing, and automated risk assessment for vulnerable services like Telnet and RDP.", 
-                tech: ["Python", "Socket Programming", "Threading", "Network Security"], 
-                github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/smart_scanner.py",
-                features: ["Multi-threaded scanning", "Service fingerprinting", "Vulnerability mapping", "Remediation recommendations"],
-                hasLink: true
-            },
-            { 
-                name: "Personal Portfolio Website", 
-                desc: "Professional cybersecurity portfolio website featuring certification showcase, experience timeline, dark/light mode, and responsive design.", 
-                tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"], 
-                github: "",
-                features: ["Dark/light mode", "Smooth scrolling", "Certification gallery", "Mobile responsive", "Scroll progress bar"],
-                hasLink: false
-            }
+            { name: "CVE Intelligence Tool", desc: "NVD API → plain English vulnerability summaries", tech: ["Python", "REST API"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/cve_translator.py", hasLink: true },
+            { name: "Log Anomaly Detector", desc: "Brute force, SQLi, XSS detection from logs", tech: ["Python", "Regex"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/log_anomaly_detector.py", hasLink: true },
+            { name: "Smart Network Scanner", desc: "Multi-threaded port scanner + risk assessment", tech: ["Python", "Socket"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/smart_scanner.py", hasLink: true }
         ];
 
         function renderPartners() {
@@ -1140,12 +872,7 @@
                 link.href = partner.url;
                 link.target = '_blank';
                 link.className = 'partner-logo';
-                link.innerHTML = `
-                    <img src="${partner.imgPath}" 
-                         alt="${partner.name}"
-                         onerror="this.src='https://via.placeholder.com/60?text=${partner.name}'">
-                    <div>${partner.name}</div>
-                `;
+                link.innerHTML = `<img src="${partner.imgPath}" alt="${partner.name}" onerror="this.src='https://via.placeholder.com/40?text=${partner.name.charAt(0)}'"><span>${partner.name}</span>`;
                 grid.appendChild(link);
             });
         }
@@ -1158,14 +885,13 @@
                 const card = document.createElement('div');
                 card.className = `cert-card ${cert.featured ? 'featured' : ''}`;
                 card.innerHTML = `
-                    <img src="${cert.imgPath}" 
-                         class="cert-img" 
-                         alt="${cert.name}"
-                         onerror="this.src='https://via.placeholder.com/60?text=Cert'">
-                    <div class="cert-name">${cert.name}</div>
-                    <div class="cert-issuer">${cert.issuer}</div>
-                    <div class="cert-date">${cert.date}</div>
-                    <span class="status-badge ${cert.status === 'progress' ? 'status-progress' : 'status-completed'}">${cert.status === 'progress' ? 'In Progress' : 'Completed'}</span>
+                    <img src="${cert.imgPath}" class="cert-img" alt="${cert.name}" onerror="this.src='https://via.placeholder.com/40?text=Cert'">
+                    <div class="cert-info">
+                        <div class="cert-name">${cert.name}</div>
+                        <div class="cert-issuer">${cert.issuer}</div>
+                        <div class="cert-date">${cert.date}</div>
+                        <span class="status-badge ${cert.status === 'progress' ? 'status-progress' : 'status-completed'}">${cert.status === 'progress' ? 'In Progress' : '✓'}</span>
+                    </div>
                 `;
                 grid.appendChild(card);
             });
@@ -1179,17 +905,13 @@
             projects.forEach(proj => {
                 const card = document.createElement('div');
                 card.className = 'project-card';
-                const featureTags = proj.features.map(f => `<span class="tech-tag feature-tag">${f}</span>`).join('');
-                const buttonHtml = proj.hasLink ? `<div class="project-links"><a href="${proj.github}" class="btn btn-outline" target="_blank">View Code on GitHub</a></div>` : '';
+                const buttonHtml = proj.hasLink ? `<div class="project-links"><a href="${proj.github}" class="btn btn-outline" target="_blank">GitHub</a></div>` : '';
                 card.innerHTML = `
-                    <div class="project-img">
-                        <img src="https://via.placeholder.com/400x160?text=${encodeURIComponent(proj.name)}" alt="${proj.name}">
-                    </div>
+                    <div class="project-img"><img src="https://via.placeholder.com/400x140?text=${encodeURIComponent(proj.name)}" alt="${proj.name}"></div>
                     <div class="project-content">
                         <h3>${proj.name}</h3>
                         <p>${proj.desc}</p>
-                        <div class="tech-stack"><strong>Technologies:</strong><div class="tech-tags-container">${proj.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div></div>
-                        <div class="features-list"><strong>Key Features:</strong><div class="features-tags-container">${featureTags}</div></div>
+                        <div>${proj.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
                         ${buttonHtml}
                     </div>
                 `;
@@ -1240,10 +962,7 @@
         }
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.add('light');
-            if (themeToggle) {
-                themeToggle.querySelector('i').classList.remove('fa-moon');
-                themeToggle.querySelector('i').classList.add('fa-sun');
-            }
+            if (themeToggle) themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
         }
 
         // Scroll Progress
@@ -1255,16 +974,6 @@
             if (progressBar) progressBar.style.width = scrolled + '%';
             const backBtn = document.getElementById('backToTop');
             if (backBtn) winScroll > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show');
-            const sections = ['home', 'certs', 'education', 'experience', 'projects', 'contact'];
-            let current = '';
-            sections.forEach(section => {
-                const element = document.getElementById(section);
-                if (element && window.scrollY >= element.offsetTop - 100) current = section;
-            });
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.section === current) btn.classList.add('active');
-            });
         });
 
         // Smooth scroll
@@ -1288,7 +997,6 @@
         // Download Resume
         function downloadResume() { window.open(RESUME_PATH, '_blank'); }
         document.getElementById('downloadResumeBtn')?.addEventListener('click', downloadResume);
-        document.getElementById('downloadResumeBtn2')?.addEventListener('click', downloadResume);
 
         document.getElementById('githubLink').href = 'https://github.com/EmanElshimy';
         
