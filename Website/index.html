@@ -6,8 +6,7 @@
     <title>Eman Elshimy | Cybersecurity Graduate | SANS Scholar</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* ========== ALL YOUR EXISTING CSS STYLES GO HERE ========== */
-        /* (Copy the entire style section from your current index.html) */
+        
         * {
             margin: 0;
             padding: 0;
@@ -810,7 +809,7 @@
             </div>
         </section>
 
-        <!-- Partner Logos Section -->
+        <!-- Logos Section -->
         <section>
             <h2 class="section-title">Recognized By</h2>
             <div class="partner-grid" id="partnerGrid"></div>
@@ -1058,7 +1057,7 @@
     </div>
 
     <script>
-        // Certifications with RELATIVE paths (for GitHub Pages)
+        // Certifications with relative paths 
         const certifications = [
             { name: "GFACT - GIAC Foundational Cybersecurity Technologies", issuer: "GIAC", date: "Feb 2026", status: "completed", featured: true, imgPath: "images/Certs/gfact.png" },
             { name: "GSEC - GIAC Security Essentials", issuer: "GIAC", date: "Est. Jun 2026", status: "progress", featured: true, imgPath: "images/Certs/gsec.png" },
@@ -1083,7 +1082,7 @@
             { name: "Malware Analysis Fundamentals", issuer: "MaharaTech", date: "Jun 2024", status: "completed", featured: false, imgPath: "images/Certs/malware.png" }
         ];
 
-        // Partner Logos with RELATIVE paths
+        // Partner Logos with relative paths
         const partners = [
             { name: "GIAC", url: "https://www.giac.org", imgPath: "images/Logos/gfact.png" },
             { name: "SANS", url: "https://www.sans.org", imgPath: "images/Logos/sans.webp" },
@@ -1197,8 +1196,8 @@
             });
         }
 
-        // Typing Animation
-        const roles = ["SOC Analyst", "Detection Engineer", "GRC Specialist", "Threat Hunter"];
+        // Typing animation
+        const roles = ["SOC Analyst", "Cybersecurity Engineer", "GRC Analyst", "Threat Hunter"];
         let roleIndex = 0, charIndex = 0;
         const typedElement = document.getElementById('typedText');
         function typeRole() {
@@ -1222,7 +1221,7 @@
         }
         typeRole();
 
-        // Dark Mode
+        // Dark mode
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', () => {
@@ -1246,7 +1245,7 @@
             }
         }
 
-        // Scroll Progress
+        // Scroll progress
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
