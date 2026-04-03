@@ -178,9 +178,9 @@
         /* Hero + About Side by Side */
         .hero-about-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 280px 1fr;
             gap: 2rem;
-            align-items: center;
+            align-items: start;
             margin-bottom: 2rem;
         }
 
@@ -215,7 +215,7 @@
 
         .about-right p {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             font-size: 0.95rem;
         }
 
@@ -378,18 +378,18 @@
             font-size: 0.7rem;
         }
 
-        /* Cert Grid - Responsive */
+        /* Cert Grid - Responsive compact */
         .cert-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 0.8rem;
         }
 
         .cert-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 0.75rem;
+            padding: 0.7rem;
             transition: all 0.3s;
             display: flex;
             align-items: center;
@@ -450,10 +450,10 @@
             color: #000;
         }
 
-        /* Timeline - Compact */
+        /* Timeline with full descriptions */
         .timeline {
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
         }
 
         .timeline::before {
@@ -468,38 +468,71 @@
 
         .timeline-item {
             position: relative;
-            padding-bottom: 1.25rem;
-            padding-left: 1rem;
+            padding-bottom: 1.8rem;
+            padding-left: 1.5rem;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -1.5rem;
+            left: -2rem;
             top: 0.3rem;
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: var(--accent);
         }
 
         .timeline-date {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--accent);
             font-weight: 600;
         }
 
         .timeline-title {
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            margin-top: 0.2rem;
         }
 
         .timeline-company {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
+            margin-bottom: 0.5rem;
         }
 
-        /* Skills - Compact */
+        .timeline-achievement {
+            background: rgba(0, 255, 136, 0.1);
+            border-left: 3px solid var(--accent);
+            padding: 0.4rem 0.7rem;
+            margin: 0.5rem 0;
+            font-size: 0.8rem;
+            color: var(--accent);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .timeline-duties {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.3rem;
+        }
+
+        .timeline-duties li {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .timeline-duties li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Skills */
         .skills-category {
             margin-bottom: 1rem;
         }
@@ -558,6 +591,26 @@
             margin-bottom: 1rem;
         }
 
+        /* Education */
+        .education-grid {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            .education-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        .uow-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
         /* Contact */
         .contact-info-grid {
             display: flex;
@@ -590,6 +643,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            color: var(--accent);
+        }
+
+        .contact-card a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
             color: var(--accent);
         }
 
@@ -651,33 +713,14 @@
             opacity: 1;
         }
 
-        .uow-logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-        }
-
-        .education-grid {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        @media (max-width: 600px) {
-            .education-grid {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        a {
-            text-decoration: none;
-        }
-
         .subsection-title {
             color: var(--accent);
             margin: 1.5rem 0 1rem 0;
             font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
@@ -708,9 +751,8 @@
     </nav>
 
     <div class="container">
-        <!-- Hero + About Side by Side  -->
+        <!-- Hero + About Side by Side -->
         <div class="hero-about-grid" id="home">
-            <!-- Left: Photo + Typing -->
             <div class="hero-left">
                 <img src="images/profile.png" 
                      class="profile-photo" 
@@ -719,16 +761,15 @@
                 <div class="typed-text" id="typedText"></div>
             </div>
             
-            <!-- Right: About + Download Resume -->
             <div class="about-right">
-                <p><strong>GIAC-certified Cybersecurity Honours Graduate</strong> and <strong>SANS/WiCyS Scholar</strong>, selected as 1 of 65 globally. Currently advancing through GSEC and GCIH, ranked in the <strong>Top 1% on TryHackMe</strong>.</p>
-                <p>Proven across SIEM engineering (Elastic), digital forensics, and GRC frameworks including NIST CSF, ISO 27001, and ASD Essential Eight. Bridges technical incident response with business risk.</p>
-                <p>📍 Graduate visa in NSW, Australia — seeking entry-level Cybersecurity or IT roles.</p>
+                <p><strong>GIAC-certified Cybersecurity Honours Graduate</strong> and <strong>SANS/WiCyS Scholar</strong>, selected as 1 of 65 globally. Currently advancing through GSEC and GCIH, ranked in the <strong>Top 1% on TryHackMe</strong>, and proven across technical assistance, SIEM engineering (Elastic), digital forensics, and GRC frameworks including NIST CSF, ISO 27001, and the ASD Essential Eight.</p>
+                <p>Ability to bridge the gap between technical incident response and business risk GRC. Have strong technical capability and the ability to translate complex findings into clear, executive-level remediation, backed by Honours research and cybersecurity writing.</p>
+                <p>📍 Currently on graduate visa in NSW, Australia, seeking entry-level Cybersecurity or IT roles. Ready to contribute from day one to a high-performing, proactive team.</p>
                 <button class="btn btn-primary" id="downloadResumeBtn" style="margin-top: 0.5rem;">📄 Download Resume (PDF)</button>
             </div>
         </div>
 
-        <!-- Stats Bar (Compact) -->
+        <!-- Stats Bar -->
         <div class="stats-grid">
             <div class="stat-card"><div class="stat-number" id="certCount">0</div><div class="stat-label">Certifications</div></div>
             <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Projects</div></div>
@@ -742,34 +783,115 @@
             <div class="partner-grid" id="partnerGrid"></div>
         </section>
 
-        <!-- Projects (3 columns) -->
+        <!-- Projects -->
         <section id="projects">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid" id="projectsGrid"></div>
         </section>
 
-        <!-- Certifications -->
+        <!-- Certifications - ALL 23 -->
         <section id="certs">
             <h2 class="section-title">Certifications</h2>
             <div class="cert-grid" id="certGrid"></div>
         </section>
 
-        <!-- Professional Experience -->
+        <!-- Professional Experience - FULL DESCRIPTIONS -->
         <section id="experience">
             <h2 class="section-title">Professional Experience</h2>
             <div class="timeline">
-                <div class="timeline-item"><div class="timeline-date">Feb 2025 – Nov 2025</div><div class="timeline-title">Peer Learning Coach</div><div class="timeline-company">University of Wollongong</div></div>
-                <div class="timeline-item"><div class="timeline-date">Jul 2023 – Nov 2025</div><div class="timeline-title">PASS Leader – Data Management & Security</div><div class="timeline-company">University of Wollongong</div></div>
-                <div class="timeline-item"><div class="timeline-date">Jul 2024 & Aug 2025</div><div class="timeline-title">PECAN CTF Presenter</div><div class="timeline-company">University of Wollongong</div></div>
-                <div class="timeline-item"><div class="timeline-date">Jul 2024 – Nov 2024</div><div class="timeline-title">Cybersecurity Intern</div><div class="timeline-company">CyberX</div></div>
-                <div class="timeline-item"><div class="timeline-date">2024</div><div class="timeline-title">Writer</div><div class="timeline-company">Incognito Criminology Journal / Women in Security Magazine</div></div>
-                <div class="timeline-item"><div class="timeline-date">Mar 2024 – Nov 2024</div><div class="timeline-title">Technical Assistant Volunteer</div><div class="timeline-company">Illawarra Multicultural Services</div></div>
-                <div class="timeline-item"><div class="timeline-date">Oct 2023 – Nov 2023</div><div class="timeline-title">Cyber Cadet</div><div class="timeline-company">GuardWare</div></div>
-                <div class="timeline-item"><div class="timeline-date">Mar 2023 – Apr 2023</div><div class="timeline-title">Customer Solutions Specialist</div><div class="timeline-company">PROBE CX (NSW Electoral Commission)</div></div>
+                
+                <!-- Peer Learning Coach -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2025 – Nov 2025</div>
+                    <div class="timeline-title">Peer Learning Coach</div>
+                    <div class="timeline-company">University of Wollongong</div>
+                    <div class="timeline-achievement">🏆 Key Achievement: Recognised for delivering measurably improved student outcomes in a coaching programme.</div>
+                    <ul class="timeline-duties">
+                        <li>Delivered tailored one-on-one academic coaching across computer science and cybersecurity subjects.</li>
+                        <li>Designed personalised study plans and practice exercises to address individual knowledge gaps.</li>
+                    </ul>
+                </div>
+                
+                <!-- PASS Leader -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Jul 2023 – Nov 2025</div>
+                    <div class="timeline-title">PASS Leader – Data Management & Security</div>
+                    <div class="timeline-company">University of Wollongong</div>
+                    <div class="timeline-achievement">🏆 Key Achievement: Drove average student grade improvement from 60% to 83%; multi-year role continuation based on consistent outcomes.</div>
+                    <ul class="timeline-duties">
+                        <li>Facilitated weekly technical sessions on data management and security for undergraduate cohorts.</li>
+                        <li>Designed interactive lab exercises and group activities reinforcing core cybersecurity concepts.</li>
+                    </ul>
+                </div>
+                
+                <!-- PECAN CTF Presenter -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Jul 2024 & Aug 2025</div>
+                    <div class="timeline-title">PECAN CTF Presenter</div>
+                    <div class="timeline-company">University of Wollongong</div>
+                    <div class="timeline-achievement">🏆 Key Achievement: Upskilled participants in forensic techniques; commended for clear, accessible technical delivery to students and early-career professionals.</div>
+                    <ul class="timeline-duties">
+                        <li>Delivered hands-on Digital Forensics and OSINT workshops demonstrating metadata analysis and file-hash investigation workflows using live CTF scenarios.</li>
+                    </ul>
+                </div>
+                
+                <!-- Cybersecurity Intern -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Jul 2024 – Nov 2024</div>
+                    <div class="timeline-title">Cybersecurity Intern</div>
+                    <div class="timeline-company">CyberX</div>
+                    <div class="timeline-achievement">🏆 Key Achievement: Identified high- and medium-severity vulnerabilities across client environments; commended for clarity of reporting that bridged engineering and executive audiences.</div>
+                    <ul class="timeline-duties">
+                        <li>Performed web and network penetration tests using Kali Linux and Burp Suite across client environments.</li>
+                        <li>Produced technical and executive penetration testing reports detailing vulnerabilities, critical findings, and remediation strategies.</li>
+                    </ul>
+                </div>
+                
+                <!-- Writer -->
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-title">Writer</div>
+                    <div class="timeline-company">Incognito Criminology Journal / Women in Security Magazine</div>
+                    <ul class="timeline-duties">
+                        <li>Authored "The Ransomware Crisis and Mitigation" (Issue 3, 2024); contributed to Women in Security Magazine (Issue 20, 2024).</li>
+                        <li>Translated complex ransomware threat intelligence into executive-level narratives to reduce human risk for non-technical audiences.</li>
+                    </ul>
+                </div>
+                
+                <!-- Technical Assistant Volunteer -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Mar 2024 – Nov 2024</div>
+                    <div class="timeline-title">Technical Assistant Volunteer</div>
+                    <div class="timeline-company">Illawarra Multicultural Services</div>
+                    <ul class="timeline-duties">
+                        <li>Diagnosed and resolved hardware/software issues for community members, maintaining strict data confidentiality and user privacy standards.</li>
+                    </ul>
+                </div>
+                
+                <!-- Cyber Cadet -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Oct 2023 – Nov 2023</div>
+                    <div class="timeline-title">Cyber Cadet</div>
+                    <div class="timeline-company">GuardWare</div>
+                    <ul class="timeline-duties">
+                        <li>Conducted threat assessments and delivered cybersecurity awareness campaigns to SME business owners and employees.</li>
+                    </ul>
+                </div>
+                
+                <!-- Customer Solutions Specialist -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Mar 2023 – Apr 2023</div>
+                    <div class="timeline-title">Customer Solutions Specialist</div>
+                    <div class="timeline-company">PROBE CX (NSW Electoral Commission)</div>
+                    <ul class="timeline-duties">
+                        <li>Managed high-volume inbound calls and expertly resolved a wide range of customer inquiries.</li>
+                        <li>Ensured consistently professional communication and delivered a positive user experience.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- Education (Compact) -->
+        <!-- Education -->
         <section>
             <h2 class="section-title">Education</h2>
             <div class="education-grid">
@@ -777,30 +899,31 @@
                 <div>
                     <p><strong>Honours in Computer Science</strong> — University of Wollongong (2025)</p>
                     <p><strong>Bachelor of Computer Science (Cyber Security Major)</strong> — University of Wollongong (2022-2024)</p>
-                    <p>Outstanding Achievement Scholarship </p>
+                    <p>🏆 Outstanding Achievement Scholarship | Top 1% TryHackMe | SANS/WiCyS Scholar</p>
                 </div>
             </div>
         </section>
 
-        <!-- Skills (Compact) -->
+        <!-- Technical Skills -->
         <section>
             <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-category"><h3>Security Operations</h3><div class="skill-tags"><span class="skill-tag">SIEM (Elastic)</span><span class="skill-tag">Log Analysis</span><span class="skill-tag">Incident Response</span><span class="skill-tag">Threat Hunting</span></div></div>
-            <div class="skills-category"><h3>GRC & Frameworks</h3><div class="skill-tags"><span class="skill-tag">NIST CSF</span><span class="skill-tag">ISO 27001</span><span class="skill-tag">ASD Essential Eight</span><span class="skill-tag">MITRE ATT&CK</span></div></div>
-            <div class="skills-category"><h3>Programming & Cloud</h3><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">GCP/BigQuery</span><span class="skill-tag">Bash</span></div></div>
-            <div class="skills-category"><h3>Tools</h3><div class="skill-tags"><span class="skill-tag">Wireshark</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">Burp Suite</span><span class="skill-tag">Nmap</span></div></div>
+            <div class="skills-category"><h3>Security Operations</h3><div class="skill-tags"><span class="skill-tag">SIEM (Elastic)</span><span class="skill-tag">Log Analysis</span><span class="skill-tag">Alert Triage</span><span class="skill-tag">Incident Response</span><span class="skill-tag">Threat Hunting</span><span class="skill-tag">Packet Analysis (Wireshark)</span></div></div>
+            <div class="skills-category"><h3>GRC & Frameworks</h3><div class="skill-tags"><span class="skill-tag">NIST CSF</span><span class="skill-tag">ISO 27001</span><span class="skill-tag">ASD Essential Eight</span><span class="skill-tag">MITRE ATT&CK</span><span class="skill-tag">Risk Assessment</span></div></div>
+            <div class="skills-category"><h3>Programming & Scripting</h3><div class="skill-tags"><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">Bash</span><span class="skill-tag">HTML/CSS</span></div></div>
+            <div class="skills-category"><h3>Cloud & Data Engineering</h3><div class="skill-tags"><span class="skill-tag">GCP/BigQuery</span><span class="skill-tag">Pub/Sub</span><span class="skill-tag">Cloud Logging</span></div></div>
+            <div class="skills-category"><h3>Security Tooling</h3><div class="skill-tags"><span class="skill-tag">Nmap</span><span class="skill-tag">Kali Linux</span><span class="skill-tag">Burp Suite</span><span class="skill-tag">Autopsy</span><span class="skill-tag">Metasploit</span><span class="skill-tag">VirusTotal</span></div></div>
         </section>
 
         <!-- Notable Achievements -->
         <section>
             <h2 class="section-title">Notable Achievements</h2>
             <div class="achievements-grid">
-                <div class="cert-card"><strong>🏆 Top 1% TryHackMe</strong><br><span style="font-size:0.7rem;">Top 1% of 3M+ users</span></div>
-                <div class="cert-card"><strong>🌟 SANS/WiCyS Scholar</strong><br><span style="font-size:0.7rem;">1 of 65 globally (double scholar)</span></div>
-                <div class="cert-card"><strong>📊 PASS Leader Excellence</strong><br><span style="font-size:0.7rem;">60% → 83% grade improvement</span></div>
-                <div class="cert-card"><strong>🏅 UOWx Leadership Award</strong><br><span style="font-size:0.7rem;">Strategic goal-setting & mentorship</span></div>
-                <div class="cert-card"><strong>🤝 UOWx Collaboration Award</strong><br><span style="font-size:0.7rem;">Cross-functional engagement</span></div>
-                <div class="cert-card"><strong>📝 Published Author</strong><br><span style="font-size:0.7rem;">Incognito Criminology + Women in Security</span></div>
+                <div class="cert-card"><strong>🏆 Top 1% TryHackMe</strong><br><span style="font-size:0.7rem;">Top 1% of over 3 million users globally</span></div>
+                <div class="cert-card"><strong>🌟 SANS/WiCyS Scholar</strong><br><span style="font-size:0.7rem;">1 of 65 selected worldwide (double scholar)</span></div>
+                <div class="cert-card"><strong>📊 PASS Leader Excellence</strong><br><span style="font-size:0.7rem;">Drove student grades from 60% → 83%</span></div>
+                <div class="cert-card"><strong>🏅 UOWx Leadership Award (2023)</strong><br><span style="font-size:0.7rem;">Strategic goal-setting and peer mentorship</span></div>
+                <div class="cert-card"><strong>🤝 UOWx Collaboration Award (2023)</strong><br><span style="font-size:0.7rem;">Cross-functional team engagement</span></div>
+                <div class="cert-card"><strong>📝 Published Author</strong><br><span style="font-size:0.7rem;">Incognito Criminology Journal + Women in Security Magazine</span></div>
             </div>
         </section>
 
@@ -834,17 +957,39 @@
     </div>
 
     <script>
-        // Certifications Data (Compact display)
+        // ================================================================
+        // ALL 23 CERTIFICATIONS - Full list
+        // ================================================================
+        
         const certifications = [
-            { name: "GFACT", issuer: "GIAC", date: "Feb 2026", status: "completed", featured: true, imgPath: "images/Certs/gfact.png" },
-            { name: "GSEC", issuer: "GIAC", date: "Est. Jun 2026", status: "progress", featured: true, imgPath: "images/Certs/gsec.png" },
-            { name: "GCIH", issuer: "GIAC", date: "Est. Sept 2026", status: "progress", featured: true, imgPath: "images/Certs/gcih.png" },
-            { name: "CISCO Junior Analyst", issuer: "Cisco", date: "2024", status: "completed", featured: false, imgPath: "images/Certs/cisco-junior.png" },
-            { name: "Elastic SIEM", issuer: "Elastic", date: "2025", status: "completed", featured: false, imgPath: "images/Certs/elastic.png" },
-            { name: "SOC Level 1", issuer: "TryHackMe", date: "2025", status: "completed", featured: false, imgPath: "images/Certs/thm-soc.png" },
-            { name: "Cloud Security", issuer: "AWS", date: "2026", status: "completed", featured: false, imgPath: "images/Certs/aws.png" }
+            // TOP 3 FEATURED (GIAC certs)
+            { name: "GFACT - GIAC Foundational Cybersecurity", issuer: "GIAC", date: "Feb 2026", status: "completed", featured: true, imgPath: "images/Certs/gfact.png" },
+            { name: "GSEC - GIAC Security Essentials", issuer: "GIAC", date: "Est. Jun 2026", status: "progress", featured: true, imgPath: "images/Certs/gsec.png" },
+            { name: "GCIH - GIAC Certified Incident Handler", issuer: "GIAC", date: "Est. Sept 2026", status: "progress", featured: true, imgPath: "images/Certs/gcih.png" },
+            // Remaining certs
+            { name: "Datacom Cyber Security Operations", issuer: "Datacom/The Forage", date: "Feb 2026", status: "completed", featured: false, imgPath: "images/Certs/datacom.png" },
+            { name: "GCP Data Engineer: BigQuery", issuer: "Skillsoft", date: "Mar 2026", status: "completed", featured: false, imgPath: "images/Certs/gcp.png" },
+            { name: "Penetration Testing Fundamentals", issuer: "Skillsoft", date: "Mar 2026", status: "completed", featured: false, imgPath: "images/Certs/pentesting.png" },
+            { name: "CISCO Networking Basics", issuer: "Cisco", date: "Jul 2025", status: "completed", featured: false, imgPath: "images/Certs/cisco-networking.png" },
+            { name: "Elastic Security for SIEM", issuer: "Elastic", date: "Aug 2025", status: "completed", featured: false, imgPath: "images/Certs/elastic.png" },
+            { name: "SOC Level 1 - TryHackMe", issuer: "TryHackMe", date: "Jan 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-soc.png" },
+            { name: "WiCyS STS - Web Fundamentals", issuer: "TryHackMe/WiCyS", date: "Oct 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-web.png" },
+            { name: "WiCyS STS - Pentesting", issuer: "TryHackMe/WiCyS", date: "Oct 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-pentest.png" },
+            { name: "WiCyS STS - Blue Team", issuer: "TryHackMe/WiCyS", date: "Oct 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-bluelight.png" },
+            { name: "Cisco Junior Cybersecurity Analyst", issuer: "Cisco", date: "Jun 2024", status: "completed", featured: false, imgPath: "images/Certs/cisco-junior.png" },
+            { name: "Malware Analysis Fundamentals", issuer: "MaharaTech", date: "Jun 2024", status: "completed", featured: false, imgPath: "images/Certs/malware.png" },
+            { name: "ISC2 Certified in Cybersecurity", issuer: "ISC2", date: "Apr 2024", status: "completed", featured: false, imgPath: "images/Certs/isc2.png" },
+            { name: "ANZ Cyber Security Management", issuer: "ANZ/The Forage", date: "Apr 2024", status: "completed", featured: false, imgPath: "images/Certs/anz.png" },
+            { name: "PwC Cyber Security Consulting", issuer: "PwC/The Forage", date: "Mar 2024", status: "completed", featured: false, imgPath: "images/Certs/pwc.png" },
+            { name: "CommBank Intro to Cybersecurity", issuer: "Commonwealth Bank", date: "Aug 2024", status: "completed", featured: false, imgPath: "images/Certs/commbank.png" },
+            { name: "Work Ready Skills", issuer: "GradConnection/DBL", date: "Aug 2024", status: "completed", featured: false, imgPath: "images/Certs/workready.png" },
+            { name: "AIG Shields Up: Cybersecurity", issuer: "AIG/The Forage", date: "Mar 2023", status: "completed", featured: false, imgPath: "images/Certs/aig.png" },
+            { name: "ANZ Workplace Preparation", issuer: "ANZ/The Forage", date: "2023", status: "completed", featured: false, imgPath: "images/Certs/anz-workplace.png" },
+            { name: "PwC Switzerland Cybersecurity", issuer: "PwC/The Forage", date: "Jul 2022", status: "completed", featured: false, imgPath: "images/Certs/pwc-swiss.png" },
+            { name: "Mastercard Cybersecurity", issuer: "Mastercard/The Forage", date: "Jun 2022", status: "completed", featured: false, imgPath: "images/Certs/mastercard.png" }
         ];
 
+        // Partner Logos
         const partners = [
             { name: "GIAC", url: "https://www.giac.org", imgPath: "images/Logos/gfact.png" },
             { name: "SANS", url: "https://www.sans.org", imgPath: "images/Logos/sans.webp" },
@@ -858,9 +1003,9 @@
         const RESUME_PATH = "resume.pdf";
 
         const projects = [
-            { name: "CVE Intelligence Tool", desc: "NVD API → plain English vulnerability summaries", tech: ["Python", "REST API"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/cve_translator.py", hasLink: true },
-            { name: "Log Anomaly Detector", desc: "Brute force, SQLi, XSS detection from logs", tech: ["Python", "Regex"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/log_anomaly_detector.py", hasLink: true },
-            { name: "Smart Network Scanner", desc: "Multi-threaded port scanner + risk assessment", tech: ["Python", "Socket"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/smart_scanner.py", hasLink: true }
+            { name: "CVE Intelligence Tool", desc: "Fetches real-time CVE data from NIST NVD API and translates technical vulnerabilities into plain English for executives.", tech: ["Python", "REST API", "JSON"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/cve_translator.py", hasLink: true },
+            { name: "Log Anomaly Detector", desc: "Real-time security event analyzer that detects brute force attacks, SQL injection, XSS, and port scanning from auth and web logs.", tech: ["Python", "Regex", "Log Parsing"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/log_anomaly_detector.py", hasLink: true },
+            { name: "Smart Network Scanner", desc: "Multi-threaded port scanner with service detection, banner grabbing, and automated risk assessment for vulnerable services.", tech: ["Python", "Socket Programming", "Threading"], github: "https://github.com/EmanElshimy/cybersecurity-tools/blob/main/smart_scanner.py", hasLink: true }
         ];
 
         function renderPartners() {
@@ -890,7 +1035,7 @@
                         <div class="cert-name">${cert.name}</div>
                         <div class="cert-issuer">${cert.issuer}</div>
                         <div class="cert-date">${cert.date}</div>
-                        <span class="status-badge ${cert.status === 'progress' ? 'status-progress' : 'status-completed'}">${cert.status === 'progress' ? 'In Progress' : '✓'}</span>
+                        <span class="status-badge ${cert.status === 'progress' ? 'status-progress' : 'status-completed'}">${cert.status === 'progress' ? 'In Progress' : 'Completed'}</span>
                     </div>
                 `;
                 grid.appendChild(card);
@@ -976,7 +1121,7 @@
             if (backBtn) winScroll > 300 ? backBtn.classList.add('show') : backBtn.classList.remove('show');
         });
 
-        // Smooth scroll
+        // Smooth scroll navigation
         document.querySelectorAll('.nav-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const section = btn.dataset.section;
