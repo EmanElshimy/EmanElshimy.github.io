@@ -24,6 +24,7 @@
             --border: #22222a;
             --glow: rgba(0, 255, 136, 0.3);
             --warning: #ffaa00;
+            --overlay-bg: rgba(0, 0, 0, 0.95);
         }
 
         body.light {
@@ -34,6 +35,7 @@
             --text-secondary: #333333;
             --text-muted: #666666;
             --border: #dddddd;
+            --overlay-bg: rgba(255, 255, 255, 0.95);
         }
 
         body {
@@ -292,7 +294,7 @@
             font-size: 0.75rem;
         }
 
-        /* Projects Grid - 3 columns */
+        /* Projects Grid - 3 columns, no images */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -315,7 +317,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            overflow: hidden;
+            padding: 1.2rem;
             transition: all 0.3s;
             display: flex;
             flex-direction: column;
@@ -326,35 +328,15 @@
             border-color: var(--accent);
         }
 
-        .project-img {
-            width: 100%;
-            height: 140px;
-            background: var(--bg-dark);
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 1rem;
-        }
-
-        .project-content h3 {
-            font-size: 1rem;
+        .project-card h3 {
+            font-size: 1.1rem;
             margin-bottom: 0.5rem;
             color: var(--accent);
         }
 
-        .project-content p {
+        .project-card p {
             color: var(--text-secondary);
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             line-height: 1.4;
             margin-bottom: 0.75rem;
         }
@@ -378,7 +360,7 @@
             font-size: 0.7rem;
         }
 
-        /* Cert Grid - Responsive compact */
+        /* Cert Grid - with click-to-enlarge */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -394,6 +376,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            cursor: pointer;
         }
 
         .cert-card.featured {
@@ -448,6 +431,43 @@
         .status-completed {
             background: var(--accent);
             color: #000;
+        }
+
+        /* Image Modal (for cert enlargement) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--overlay-bg);
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 3px solid var(--accent);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: var(--accent);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
         }
 
         /* Timeline with full descriptions */
@@ -735,6 +755,12 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Image Modal for Cert Enlargement -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
     <nav class="navbar">
         <div class="hamburger" id="hamburger">
             <span></span>
@@ -764,7 +790,7 @@
             <div class="about-right">
                 <p><strong>GIAC-certified Cybersecurity Honours Graduate</strong> and <strong>SANS/WiCyS Scholar</strong>, selected as 1 of 65 globally. Currently advancing through GSEC and GCIH, ranked in the <strong>Top 1% on TryHackMe</strong>, and proven across technical assistance, SIEM engineering (Elastic), digital forensics, and GRC frameworks including NIST CSF, ISO 27001, and the ASD Essential Eight.</p>
                 <p>Ability to bridge the gap between technical incident response and business risk GRC. Have strong technical capability and the ability to translate complex findings into clear, executive-level remediation, backed by Honours research and cybersecurity writing.</p>
-                <p>📍 Currently on graduate visa in NSW, Australia, seeking entry-level Cybersecurity or IT roles. Ready to contribute from day one to a high-performing, proactive team.</p>
+                <p>📍 Currently seeking entry-level Cybersecurity or IT roles. Ready to contribute from day one to a high-performing, proactive team.</p>
                 <button class="btn btn-primary" id="downloadResumeBtn" style="margin-top: 0.5rem;">📄 Download Resume (PDF)</button>
             </div>
         </div>
@@ -772,7 +798,7 @@
         <!-- Stats Bar -->
         <div class="stats-grid">
             <div class="stat-card"><div class="stat-number" id="certCount">0</div><div class="stat-label">Certifications</div></div>
-            <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Projects</div></div>
+            <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Projects</div></div>
             <div class="stat-card"><div class="stat-number">8</div><div class="stat-label">Experience</div></div>
             <div class="stat-card"><div class="stat-number">1%</div><div class="stat-label">TryHackMe</div></div>
         </div>
@@ -783,13 +809,13 @@
             <div class="partner-grid" id="partnerGrid"></div>
         </section>
 
-        <!-- Projects -->
+        <!-- Projects - No Images -->
         <section id="projects">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid" id="projectsGrid"></div>
         </section>
 
-        <!-- Certifications - ALL 23 -->
+        <!-- Certifications - ALL 23 with click-to-enlarge -->
         <section id="certs">
             <h2 class="section-title">Certifications</h2>
             <div class="cert-grid" id="certGrid"></div>
@@ -899,7 +925,7 @@
                 <div>
                     <p><strong>Honours in Computer Science</strong> — University of Wollongong (2025)</p>
                     <p><strong>Bachelor of Computer Science (Cyber Security Major)</strong> — University of Wollongong (2022-2024)</p>
-                    <p>🏆 Outstanding Achievement Scholarship | Top 1% TryHackMe | SANS/WiCyS Scholar</p>
+                    <p>🏆 Outstanding Achievement Scholarship</p>
                 </div>
             </div>
         </section>
@@ -1029,6 +1055,7 @@
             certifications.forEach(cert => {
                 const card = document.createElement('div');
                 card.className = `cert-card ${cert.featured ? 'featured' : ''}`;
+                card.setAttribute('data-full-img', cert.imgPath);
                 card.innerHTML = `
                     <img src="${cert.imgPath}" class="cert-img" alt="${cert.name}" onerror="this.src='https://via.placeholder.com/40?text=Cert'">
                     <div class="cert-info">
@@ -1038,6 +1065,15 @@
                         <span class="status-badge ${cert.status === 'progress' ? 'status-progress' : 'status-completed'}">${cert.status === 'progress' ? 'In Progress' : 'Completed'}</span>
                     </div>
                 `;
+                // Add click event to enlarge cert image
+                card.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const imgSrc = this.getAttribute('data-full-img');
+                    const modal = document.getElementById('imageModal');
+                    const modalImg = document.getElementById('modalImage');
+                    modal.style.display = 'flex';
+                    modalImg.src = imgSrc;
+                });
                 grid.appendChild(card);
             });
             document.getElementById('certCount').innerText = certifications.length;
@@ -1052,17 +1088,35 @@
                 card.className = 'project-card';
                 const buttonHtml = proj.hasLink ? `<div class="project-links"><a href="${proj.github}" class="btn btn-outline" target="_blank">GitHub</a></div>` : '';
                 card.innerHTML = `
-                    <div class="project-img"><img src="https://via.placeholder.com/400x140?text=${encodeURIComponent(proj.name)}" alt="${proj.name}"></div>
-                    <div class="project-content">
-                        <h3>${proj.name}</h3>
-                        <p>${proj.desc}</p>
-                        <div>${proj.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
-                        ${buttonHtml}
-                    </div>
+                    <h3>${proj.name}</h3>
+                    <p>${proj.desc}</p>
+                    <div>${proj.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
+                    ${buttonHtml}
                 `;
                 grid.appendChild(card);
             });
         }
+
+        // Modal functionality
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.modal-close');
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        closeBtn.onclick = closeModal;
+        modal.onclick = function(e) {
+            if (e.target === modal) closeModal();
+        };
+
+        // Escape key to close modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
 
         // Typing Animation
         const roles = ["SOC Analyst", "Detection Engineer", "GRC Specialist", "Threat Hunter"];
