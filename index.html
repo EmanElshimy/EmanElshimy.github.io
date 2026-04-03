@@ -254,7 +254,6 @@
             color: #000;
         }
 
-        /* Partner Logos */
         .partner-grid {
             display: flex;
             flex-wrap: wrap;
@@ -294,7 +293,6 @@
             font-size: 0.75rem;
         }
 
-        /* Projects Grid - 3 columns, no images */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -360,7 +358,6 @@
             font-size: 0.7rem;
         }
 
-        /* Cert Grid - with click-to-enlarge */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -433,7 +430,6 @@
             color: #000;
         }
 
-        /* Image Modal (for cert enlargement) */
         .modal {
             display: none;
             position: fixed;
@@ -470,7 +466,6 @@
             color: var(--text-primary);
         }
 
-        /* Timeline with full descriptions */
         .timeline {
             position: relative;
             padding-left: 2rem;
@@ -552,7 +547,6 @@
             color: var(--accent);
         }
 
-        /* Skills */
         .skills-category {
             margin-bottom: 1rem;
         }
@@ -577,7 +571,6 @@
             font-size: 0.7rem;
         }
 
-        /* Stats */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -603,7 +596,6 @@
             color: var(--text-muted);
         }
 
-        /* Achievements Grid */
         .achievements-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -611,7 +603,6 @@
             margin-bottom: 1rem;
         }
 
-        /* Education */
         .education-grid {
             display: flex;
             gap: 1.5rem;
@@ -631,7 +622,6 @@
             object-fit: contain;
         }
 
-        /* Contact */
         .contact-info-grid {
             display: flex;
             flex-direction: column;
@@ -755,7 +745,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Image Modal for Cert Enlargement -->
     <div id="imageModal" class="modal">
         <span class="modal-close">&times;</span>
         <img class="modal-content" id="modalImage">
@@ -777,7 +766,6 @@
     </nav>
 
     <div class="container">
-        <!-- Hero + About Side by Side -->
         <div class="hero-about-grid" id="home">
             <div class="hero-left">
                 <img src="images/profile.png" 
@@ -790,7 +778,7 @@
             <div class="about-right">
                 <p><strong>GIAC-certified Cybersecurity Honours Graduate</strong> and <strong>SANS/WiCyS Scholar</strong>, selected as 1 of 65 globally. Currently advancing through GSEC and GCIH, ranked in the <strong>Top 1% on TryHackMe</strong>, and proven across technical assistance, SIEM engineering (Elastic), digital forensics, and GRC frameworks including NIST CSF, ISO 27001, and the ASD Essential Eight.</p>
                 <p>Ability to bridge the gap between technical incident response and business risk GRC. Have strong technical capability and the ability to translate complex findings into clear, executive-level remediation, backed by Honours research and cybersecurity writing.</p>
-                <p>📍 Currently seeking entry-level Cybersecurity or IT roles. Ready to contribute from day one to a high-performing, proactive team.</p>
+                <p>Currently seeking entry-level Cybersecurity or IT roles. Ready to contribute from day one to a high-performing, proactive team.</p>
                 <button class="btn btn-primary" id="downloadResumeBtn" style="margin-top: 0.5rem;">📄 Download Resume (PDF)</button>
             </div>
         </div>
@@ -809,19 +797,19 @@
             <div class="partner-grid" id="partnerGrid"></div>
         </section>
 
-        <!-- Projects - No Images -->
+        <!-- Projects -->
         <section id="projects">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid" id="projectsGrid"></div>
         </section>
 
-        <!-- Certifications - ALL 23 with click-to-enlarge -->
+        <!-- Certifications -->
         <section id="certs">
             <h2 class="section-title">Certifications</h2>
             <div class="cert-grid" id="certGrid"></div>
         </section>
 
-        <!-- Professional Experience - FULL DESCRIPTIONS -->
+        <!-- Professional Experience -->
         <section id="experience">
             <h2 class="section-title">Professional Experience</h2>
             <div class="timeline">
@@ -831,7 +819,7 @@
                     <div class="timeline-date">Feb 2025 – Nov 2025</div>
                     <div class="timeline-title">Peer Learning Coach</div>
                     <div class="timeline-company">University of Wollongong</div>
-                    <div class="timeline-achievement">🏆 Key Achievement: Recognised for delivering measurably improved student outcomes in a coaching programme.</div>
+                    <div class="timeline-achievement">Key Achievement: Recognised for delivering measurably improved student outcomes in a coaching programme.</div>
                     <ul class="timeline-duties">
                         <li>Delivered tailored one-on-one academic coaching across computer science and cybersecurity subjects.</li>
                         <li>Designed personalised study plans and practice exercises to address individual knowledge gaps.</li>
@@ -843,7 +831,7 @@
                     <div class="timeline-date">Jul 2023 – Nov 2025</div>
                     <div class="timeline-title">PASS Leader – Data Management & Security</div>
                     <div class="timeline-company">University of Wollongong</div>
-                    <div class="timeline-achievement">🏆 Key Achievement: Drove average student grade improvement from 60% to 83%; multi-year role continuation based on consistent outcomes.</div>
+                    <div class="timeline-achievement">Key Achievement: Drove average student grade improvement from 60% to 83%; multi-year role continuation based on consistent outcomes.</div>
                     <ul class="timeline-duties">
                         <li>Facilitated weekly technical sessions on data management and security for undergraduate cohorts.</li>
                         <li>Designed interactive lab exercises and group activities reinforcing core cybersecurity concepts.</li>
@@ -855,7 +843,7 @@
                     <div class="timeline-date">Jul 2024 & Aug 2025</div>
                     <div class="timeline-title">PECAN CTF Presenter</div>
                     <div class="timeline-company">University of Wollongong</div>
-                    <div class="timeline-achievement">🏆 Key Achievement: Upskilled participants in forensic techniques; commended for clear, accessible technical delivery to students and early-career professionals.</div>
+                    <div class="timeline-achievement">Key Achievement: Upskilled participants in forensic techniques; commended for clear, accessible technical delivery to students and early-career professionals.</div>
                     <ul class="timeline-duties">
                         <li>Delivered hands-on Digital Forensics and OSINT workshops demonstrating metadata analysis and file-hash investigation workflows using live CTF scenarios.</li>
                     </ul>
@@ -866,7 +854,7 @@
                     <div class="timeline-date">Jul 2024 – Nov 2024</div>
                     <div class="timeline-title">Cybersecurity Intern</div>
                     <div class="timeline-company">CyberX</div>
-                    <div class="timeline-achievement">🏆 Key Achievement: Identified high- and medium-severity vulnerabilities across client environments; commended for clarity of reporting that bridged engineering and executive audiences.</div>
+                    <div class="timeline-achievement">Key Achievement: Identified vulnerabilities across various environments; commended for clarity of reporting that bridged engineering and executive audiences.</div>
                     <ul class="timeline-duties">
                         <li>Performed web and network penetration tests using Kali Linux and Burp Suite across client environments.</li>
                         <li>Produced technical and executive penetration testing reports detailing vulnerabilities, critical findings, and remediation strategies.</li>
@@ -925,7 +913,7 @@
                 <div>
                     <p><strong>Honours in Computer Science</strong> — University of Wollongong (2025)</p>
                     <p><strong>Bachelor of Computer Science (Cyber Security Major)</strong> — University of Wollongong (2022-2024)</p>
-                    <p>🏆 Outstanding Achievement Scholarship</p>
+                    <p>Outstanding Achievement Scholarship</p>
                 </div>
             </div>
         </section>
@@ -984,7 +972,7 @@
 
     <script>
         // ================================================================
-        // ALL 23 CERTIFICATIONS - Full list
+        // CERTIFICATIONS 
         // ================================================================
         
         const certifications = [
@@ -996,8 +984,8 @@
             { name: "Datacom Cyber Security Operations", issuer: "Datacom/The Forage", date: "Feb 2026", status: "completed", featured: false, imgPath: "images/Certs/datacom.png" },
             { name: "GCP Data Engineer: BigQuery", issuer: "Skillsoft", date: "Mar 2026", status: "completed", featured: false, imgPath: "images/Certs/gcp.png" },
             { name: "Penetration Testing Fundamentals", issuer: "Skillsoft", date: "Mar 2026", status: "completed", featured: false, imgPath: "images/Certs/pentesting.png" },
-            { name: "CISCO Networking Basics", issuer: "Cisco", date: "Jul 2025", status: "completed", featured: false, imgPath: "images/Certs/cisco-networking.png" },
             { name: "Elastic Security for SIEM", issuer: "Elastic", date: "Aug 2025", status: "completed", featured: false, imgPath: "images/Certs/elastic.png" },
+            { name: "CISCO Networking Basics", issuer: "Cisco", date: "Jul 2025", status: "completed", featured: false, imgPath: "images/Certs/cisco-networking.png" },
             { name: "SOC Level 1 - TryHackMe", issuer: "TryHackMe", date: "Jan 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-soc.png" },
             { name: "WiCyS STS - Web Fundamentals", issuer: "TryHackMe/WiCyS", date: "Oct 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-web.png" },
             { name: "WiCyS STS - Pentesting", issuer: "TryHackMe/WiCyS", date: "Oct 2025", status: "completed", featured: false, imgPath: "images/Certs/thm-pentest.png" },
@@ -1007,10 +995,6 @@
             { name: "ISC2 Certified in Cybersecurity", issuer: "ISC2", date: "Apr 2024", status: "completed", featured: false, imgPath: "images/Certs/isc2.png" },
             { name: "ANZ Cyber Security Management", issuer: "ANZ/The Forage", date: "Apr 2024", status: "completed", featured: false, imgPath: "images/Certs/anz.png" },
             { name: "PwC Cyber Security Consulting", issuer: "PwC/The Forage", date: "Mar 2024", status: "completed", featured: false, imgPath: "images/Certs/pwc.png" },
-            { name: "CommBank Intro to Cybersecurity", issuer: "Commonwealth Bank", date: "Aug 2024", status: "completed", featured: false, imgPath: "images/Certs/commbank.png" },
-            { name: "Work Ready Skills", issuer: "GradConnection/DBL", date: "Aug 2024", status: "completed", featured: false, imgPath: "images/Certs/workready.png" },
-            { name: "AIG Shields Up: Cybersecurity", issuer: "AIG/The Forage", date: "Mar 2023", status: "completed", featured: false, imgPath: "images/Certs/aig.png" },
-            { name: "ANZ Workplace Preparation", issuer: "ANZ/The Forage", date: "2023", status: "completed", featured: false, imgPath: "images/Certs/anz-workplace.png" },
             { name: "PwC Switzerland Cybersecurity", issuer: "PwC/The Forage", date: "Jul 2022", status: "completed", featured: false, imgPath: "images/Certs/pwc-swiss.png" },
             { name: "Mastercard Cybersecurity", issuer: "Mastercard/The Forage", date: "Jun 2022", status: "completed", featured: false, imgPath: "images/Certs/mastercard.png" }
         ];
